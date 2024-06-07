@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSupabaseAuth, SupabaseAuthUI } from "../integrations/supabase/auth.jsx";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const Login = () => {
   const { session } = useSupabaseAuth();
@@ -14,10 +15,14 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded shadow-md">
-        <h2 className="mb-4 text-2xl font-bold text-center">Login</h2>
-        <SupabaseAuthUI />
-      </div>
+      <Card className="w-full max-w-md p-8">
+        <CardHeader>
+          <CardTitle className="text-center">Login</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <SupabaseAuthUI />
+        </CardContent>
+      </Card>
     </div>
   );
 };

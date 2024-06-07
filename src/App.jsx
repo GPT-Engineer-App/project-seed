@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { useForm } from "react-hook-form";
 
 function App() {
@@ -39,21 +40,32 @@ function App() {
 
   return (
     <div>
-      <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
-        <h1 className="text-xl">My App</h1>
-        {session ? (
-          <Button variant="outline" onClick={logout}>Logout</Button>
-        ) : (
-          <Button variant="outline" asChild>
-            <a href="/login">Login</a>
-          </Button>
-        )}
-      </nav>
+      <NavigationMenu className="bg-gray-800 text-white p-4">
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>My App</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <NavigationMenuLink href="/">Home</NavigationMenuLink>
+              <NavigationMenuLink href="/about">About</NavigationMenuLink>
+              <NavigationMenuLink href="/contact">Contact</NavigationMenuLink>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            {session ? (
+              <Button variant="outline" onClick={logout}>Logout</Button>
+            ) : (
+              <Button variant="outline" asChild>
+                <a href="/login">Login</a>
+              </Button>
+            )}
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
       <main className="p-4">
         {session ? (
           <div>
-            <h2>Welcome, {session.user.email}</h2>
-            <p>This is your dashboard.</p>
+            <h2 className="text-2xl font-bold">Welcome, {session.user.email}</h2>
+            <p className="text-gray-600">This is your dashboard.</p>
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="outline">Add Task</Button>
@@ -99,8 +111,8 @@ function App() {
           </div>
         ) : (
           <div>
-            <h2>Welcome to My App</h2>
-            <p>Please log in to access your dashboard.</p>
+            <h2 className="text-2xl font-bold">Welcome to My App</h2>
+            <p className="text-gray-600">Please log in to access your dashboard.</p>
           </div>
         )}
       </main>
