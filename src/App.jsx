@@ -1,30 +1,11 @@
-import { useState } from "react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card.jsx";
-import { Button } from "@/components/ui/button.jsx";
-import "./App.css";
+import React from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Card>
-        <CardHeader>
-          <CardTitle>Hello world!</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>This is an example</p>
-          <hr className="my-4" />
-          <Button onClick={() => setCount(count + 1)}>Click me</Button>
-          <div>Count: {count}</div>
-        </CardContent>
-      </Card>
-    </>
+    <div>
+      <h1>Welcome to the Empty Project</h1>
+      <p>This is a blank slate. Start building your application here.</p>
+    </div>
   );
 }
 
